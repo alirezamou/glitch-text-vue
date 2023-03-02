@@ -1,0 +1,1 @@
+### A glitch text component in vue
