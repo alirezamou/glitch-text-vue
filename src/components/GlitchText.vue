@@ -6,30 +6,26 @@
 <script>
 export default {
     props: {
-        text: String
+        text: String,
     },
     data() {
         return {
             displayText: "",
+            target: "",
             randomChars: "~!@#$%^&*()<>/",
-            idxText: 0
         }
     },
     methods: {
         updateDisplay () {
-            let tempText = this.displayText.split("");
-            if(this.displayText.length < this.text.length + 1) {
-                const rndChr = this.glitchChar();
-                tempText.push(rndChr);
-                for(let i = 0; i < this.idxText; i++) {
-                    tempText[i] = this.text[i];
-                }
-                this.idxText++;
-                this.displayText = tempText.join("");
-                setTimeout(this.updateDisplay, 100);
+            if(this.target.length < this.text.length) {
+                let tempText = this.target + this.text[this.target.length];
+                tempText += this.glitchChar();
+                this.target += this.text[this.target.length];
+                console.log(this.target);
+                this.displayText = tempText;
+                setTimeout(() => this.updateDisplay(), 100);
             } else {
-                tempText.pop();
-                this.displayText = tempText.join("");
+                this.displayText = this.text;
             }
         },
         glitchChar() {
@@ -38,12 +34,12 @@ export default {
         }
     },
     mounted() {
-        this.updateDisplay();
+        this.updateDisplay("");
     },
     watch: {
         displayText: {
             handler(val) {
-                console.log("under watch, val is: ", val)
+                // console.log("under watch, val is: ", val)
             }
         }
     }
