@@ -40,5 +40,13 @@ export default {
     mounted() {
         this.updateDisplay();
     },
+    watch: {
+        text: {
+            handler() {
+                this.target = "";
+                this.updateDisplay();
+            }
+        }
+    }
 }
 </script>

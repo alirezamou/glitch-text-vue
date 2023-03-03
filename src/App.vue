@@ -1,5 +1,6 @@
 <template>
-  <GlitchText text="alireza" :speed="100" />
+  <GlitchText :text="revealingText" :speed="100" />
+  <button @click="revealingText = 'Glitching text is cool'">Change the text</button>
 </template>
 
 <script>
