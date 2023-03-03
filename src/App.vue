@@ -1,5 +1,5 @@
 <template>
-  <GlitchText text="alireza" />
+  <GlitchText text="alireza" :speed="100" />
 </template>
 
 <script>
